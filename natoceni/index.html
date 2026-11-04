@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Šlapanice · natáčení A</title>
+<style>
+@font-face{font-family:Switzer;src:url(font/Switzer-Variable.ttf) format("truetype");font-weight:100 900}
+:root{--ink:#16130f;--paper:#f6f1e8;--card:#fffdf8;--line:#e2d9c8;--mute:#6f675b;--wine:#7a1f2b;--gold:#b08a4a;--ok:#2f7a4f;--okbg:#e6f1e9}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.45 Switzer,-apple-system,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 70px}
+.tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;overflow-x:auto;background:rgba(246,241,232,.97);margin:0 -16px;padding:10px 16px;border-bottom:1px solid var(--line);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;font:inherit;font-size:15px;font-weight:600;border:1.5px solid var(--ink);background:#fff;color:var(--ink);border-radius:99px;padding:8px 14px;cursor:pointer}
+.tabs button.on{background:var(--ink);color:#fff}
+.tabs .pdf{margin-left:auto;text-decoration:none;color:var(--mute);font-size:14px;align-self:center;white-space:nowrap}
+.pnl{display:none;padding-top:14px}
+.pnl.on{display:block}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);font-weight:600}
+h2{font-weight:700;font-size:27px;line-height:1.15;margin:4px 0 2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.poc{color:var(--mute);margin:0 0 8px;font-size:14.5px}
+.oco{font-size:16.5px;margin:0 0 8px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.meta span{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:3px 10px;font-size:13px}
+.vb{display:inline-block;font-size:12px;font-weight:700;border-radius:5px;padding:2px 7px;color:#fff;vertical-align:1px}
+h2 .vb{font-size:16px;padding:3px 9px}
+.vb.s2{background:#9a6b1f}.vb.f1{background:#c0561b}.vb.f2{background:#111;color:#8fe39a}
+.kap{display:grid;grid-template-columns:200px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0}
+.kap img,.kap .noimg{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block;background:#e9e1d3}
+.kap h3{margin:0 0 3px;font-size:17px;display:flex;align-items:center;gap:8px}
+.kn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:13.5px;flex:none}
+.kap p{margin:0 0 5px;font-size:15px}
+.say{border-left:4px solid var(--wine);background:#fbf0f1;border-radius:0 8px 8px 0;padding:5px 10px;margin:5px 0;font-size:15.5px;font-weight:500}
+.say .who{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);font-weight:800}
+.vanda{color:#4a4038;font-style:italic}
+.nat{color:#3a332a}.nat b{color:var(--ink)}
+.ref{color:var(--wine);font-weight:600;white-space:nowrap}
+h4{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:16px 0 6px}
+.harm{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:14.5px}
+.harm th,.harm td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.harm th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.harm .t{font-weight:700;white-space:nowrap}.harm .rr{white-space:nowrap;color:var(--mute)}
+.harm .vb{margin-right:3px}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:1px 6px;color:#fff;background:#8a8275;margin-left:4px;vertical-align:1px}
+.tag.d{background:#d9a441;color:#1d1606}.tag.n{background:#3b4a6b}.tag.u{background:var(--wine)}
+.rules{font-size:14px;color:#3a332a;margin:8px 0 0}
+.prog{font-weight:700;margin-left:auto;font-size:14px;white-space:nowrap}
+.blk{display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:10px;padding:7px 12px;margin:14px 0 4px}
+.bt{font-weight:800}.bk{font-weight:600}
+.sl{display:grid;grid-template-columns:1fr auto;gap:2px 10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:4px 0}
+.sl label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.sl input{flex:none;appearance:none;-webkit-appearance:none;width:28px;height:28px;margin:0;border:2.5px solid var(--ink);border-radius:7px;background:#fff;display:grid;place-content:center;cursor:pointer}
+.sl input:checked{background:var(--ok);border-color:var(--ok)}
+.sl input:checked:after{content:"";width:8px;height:14px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-2px) rotate(45deg)}
+.sl .n{font-weight:700;color:var(--wine);min-width:22px;padding-top:3px}
+.sl .tx{font-size:15.5px;padding-top:2px}
+.sl .rf{display:flex;gap:4px;align-items:flex-start;flex-wrap:wrap;justify-content:flex-end;padding-top:3px}
+.sl .rf i{font-style:normal;font-size:11px;font-weight:700;color:var(--mute);margin:2px 4px 0 1px}
+.sl .say,.sl .alt{grid-column:1/-1;margin-left:70px}
+.alt{font-size:13.5px;color:#5a4547}
+.alt summary{cursor:pointer;color:var(--wine);font-weight:600}
+.alt p{margin:3px 0}
+.p{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:2px 6px;color:#fff}
+.p.h{background:var(--wine)}.p.k{background:#2f6b4f}.p.x{background:#8a8275}.p.f{background:#4d6a86}
+.sl.done{background:var(--okbg)}
+.sl.done .tx{text-decoration:line-through;color:#5b6b60}
+.sl.done .say,.sl.done .alt{opacity:.5}
+.foot{margin-top:24px;font-size:12px;color:var(--mute)}
+@media (max-width:640px){
+  .kap{grid-template-columns:1fr}
+  h2{font-size:23px}
+  .sl{grid-template-columns:1fr}
+  .sl .rf{justify-content:flex-start;margin-left:70px}
+  .sl .say,.sl .alt{margin-left:0}
+}
+@media print{
+  @page{size:A4;margin:9mm 10mm}
+  body{background:#fff;font-size:9pt}
+  .wrap{max-width:none;padding:0}
+  .tabs,.alt,.noprint{display:none!important}
+  .pnl{display:block!important;padding-top:0;break-before:page}
+  .pnl:first-of-type{break-before:auto}
+  h2{font-size:17pt;margin:2px 0 0}.poc{font-size:8.5pt;margin-bottom:3px}.oco{font-size:9.5pt;margin-bottom:4px}
+  .meta{margin-bottom:5px}.meta span{font-size:8pt;padding:1px 7px}
+  .kap{grid-template-columns:44mm 1fr;gap:8px;padding:5px 7px;margin:4px 0;break-inside:avoid}
+  .kap h3{font-size:10.5pt;margin-bottom:1px}.kn{width:18px;height:18px;font-size:8.5pt}
+  .kap p{font-size:8.8pt;margin-bottom:2px}
+  .say{font-size:9pt;padding:2px 7px;margin:2px 0}.say .who{font-size:6.5pt}
+  .harm{font-size:8.5pt}.harm th,.harm td{padding:2px 6px}
+  h4{margin:6px 0 3px;font-size:8pt}
+  .rules{font-size:8.5pt;margin-top:3px}
+  .blk{padding:2px 8px;margin:5px 0 2px;border-radius:5px;break-after:avoid}
+  .sl{padding:2px 7px;margin:2px 0;border-radius:5px;break-inside:avoid}
+  .sl input{width:12px;height:12px;border-width:1.5px;border-radius:2px}
+  .sl .n{padding-top:0;min-width:16px}.sl .tx{font-size:8.6pt;padding-top:0}
+  .sl .say{margin-left:44px;font-size:8.4pt;padding:1px 6px}
+  .sl .rf{padding-top:0}
+  .slw{columns:2;column-gap:5mm}
+  .blk{break-inside:avoid;font-size:8.5pt}
+  .sl{display:block;padding:2px 5px}.sl label{display:inline-flex;gap:5px}
+  .sl .rf{display:inline-flex;margin-left:4px;vertical-align:1px}.sl .rf .vb,.sl .rf .p{font-size:6.5pt;padding:0 4px}
+  .sl .say{margin:1px 0 0 28px;font-size:8pt}
+  .sl .tx{font-size:8.3pt}
+  .vb,.p,.tag,.blk,.kn,.say,.harm th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.p.s{background:#7a5a1f}.tc{font-size:13px;font-weight:600;color:var(--mute);margin-left:4px}
+.tabs .dl{flex:none;text-decoration:none;font-size:14px;font-weight:600;border:1.5px solid var(--gold);color:#5b4520;background:#fff8ea;border-radius:99px;padding:7px 12px;align-self:center;white-space:nowrap}
+.tabs .dl:first-of-type{margin-left:auto}
+.kam{border:2px solid var(--gold);background:linear-gradient(180deg,#fff6e2,#fffdf8);border-radius:14px;padding:12px 16px;margin:12px 0}
+.kam .kh{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--wine);font-weight:800}
+.kam .adr{font-size:24px;font-weight:700;line-height:1.2;margin:2px 0 4px}
+.kam p{margin:0 0 6px;font-size:15.5px}.kam .gps{font-size:16px}.kam .gps a{color:var(--ink)}.kam .gps b{font-variant-numeric:tabular-nums;user-select:all}
+.kam .sm{font-size:13.5px;color:var(--mute);margin:6px 0 0}
+.navb{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 2px}
+.navb a{text-decoration:none;font-weight:700;font-size:15px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 14px}
+.navb a+a{background:#fff;color:var(--ink);border:1.5px solid var(--ink)}
+.mapa{margin:10px 0}.mapa img{width:100%;display:block;border-radius:12px}
+.mapa figcaption{font-size:13.5px;color:#3a332a;margin-top:6px}.mapa figcaption a{font-weight:700;color:var(--wine);white-space:nowrap}
+.prav,.pr0{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;margin:10px 0}
+.prav h4,.pr0 h4{margin:2px 0 4px}.prav ul{margin:0;padding-left:18px}.prav li{font-size:14.5px;margin:2px 0}
+.pr0 label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;margin:5px 0;cursor:pointer}
+.pr0 input{flex:none;width:22px;height:22px;margin:0;accent-color:#2f7a4f}
+.p.f{background:#4d6a86}
+.rep{font-weight:400}
+.rep .pr,.rep .po{display:block;font-size:13.5px;color:#4a3b3d;margin:3px 0}
+.rep .chs{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+.rep .ch{font:inherit;text-align:left;font-size:17px;font-weight:600;line-height:1.3;background:#fff;border:1.5px solid #e3c9cd;border-radius:10px;padding:9px 12px;cursor:pointer;color:var(--ink)}
+.rep .ch b{display:inline-block;min-width:22px;color:var(--wine)}
+.rep .ch.on{background:var(--wine);border-color:var(--wine);color:#fff}.rep .ch.on b{color:#ffd9a0}
+.rep .ln{display:block;font-size:18px;font-weight:700;margin:5px 0}
+.sl .rep .ch{font-size:15px;padding:6px 10px}
+.zp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;margin:8px 0}
+.zp h3{margin:2px 0 4px;font-size:17px}.zp ul{margin:0;padding-left:18px}.zp li{font-size:14.5px;margin:4px 0}
+.zp code,.zp li{word-break:break-word}.por{padding-left:20px}.por li{font-size:14.5px;margin:2px 0}
+.sm{font-size:13.5px;color:var(--mute)}
+@media print{.kam{padding:5px 9px;margin:4px 0;border-width:1.5px}.kam .adr{font-size:14pt}.kam p{font-size:9pt;margin-bottom:2px}
+.kam .gps{font-size:10pt}.kam .sm{font-size:8pt}.mapa{margin:4px 0;break-inside:avoid}.mapa img{border-radius:4px}.mapa figcaption{font-size:8pt}
+.prav,.pr0{padding:3px 9px;margin:4px 0;break-inside:avoid}.prav li,.pr0 label{font-size:8.5pt;margin:0}.slt{break-before:page}
+.rep .ch{font-size:9pt!important;padding:2px 6px!important;border-width:1px}.rep .ch.on{background:#fff;color:var(--ink);border:2px solid var(--wine)}
+.rep .pr,.rep .po{font-size:8pt}.zp li{font-size:8.5pt}.zp{break-inside:avoid}
+.kam,.navb a,.mapa img{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><button type="button" data-t="SL">Plán dne</button><button type="button" data-t="R">Repliky</button><button type="button" data-t="Z">Zpracování</button><a class="dl" href="Helesic_natoceni_A.pdf" download>⬇ PDF</a><a class="dl" href="Podcast_Helesic_natoceni_2026-11-04.mp3" download>🎧 Podcast</a></nav>
+<section class="pnl" data-tab="SL"><div class="eyebrow">Šlapanice · Lidická · Daniel Helešic · varianta A</div><h2>Plán dne · středa 4. 11. od 13:00 <span id="prog" class="prog noprint"></span></h2><p class="rules"><b>Terasa až na konec.</b> Míří na 252° do dvora, slunce v 15:30 na 236° a 8° nad obzorem, v 16:15 na 245°, zapadá v 16:28. Hook a ulici bereme hned po příjezdu, byt přes den, dron v 15:25, terasu s Danielem a reelem od 15:45. Daniel je potřeba 13:15–14:50 a 15:45–16:25.</p><div class="kam"><div class="kh">Kam jet</div><div class="adr">Lidická 1952/2a, 664 51 Šlapanice</div><p>Bytový dům Zlatý potok na rohu, plochá šedá střecha, podél Lidické teče potok. Byt č. 12 ve 3. NP, terasa do dvora na západ. Zastavit na Lidické před domem u bodu P.</p><p class="gps">Bod P · <a href="https://www.google.com/maps/dir/?api=1&destination=49.165477,16.729384&travelmode=driving" target="_blank" rel="noopener"><b>49.165477, 16.729384</b></a></p><div class="navb noprint"><a href="https://www.google.com/maps/dir/?api=1&destination=49.165477,16.729384&travelmode=driving" target="_blank" rel="noopener">Navigovat · Google Maps</a><a href="https://mapy.com/fnc/v1/showmap?mapset=aerial&center=16.729384,49.165477&zoom=19&marker=true" target="_blank" rel="noopener">Mapy.cz</a><a href="tel:+420730815185">Volat Danielovi</a></div><p class="sm">Daniel Helešic, +420 730 815 185, tykáme. Vjezd do garáže si ukaž hned po příjezdu, na mapě není jistý.</p></div><div class="pr0"><h4>Před natáčením</h4><label><input type="checkbox" data-id="p0"><span>Byt: kabely u stolu, osobní věci a kosmetika z koupelny pryč; umýt okna a dveře na terasu</span></label><label><input type="checkbox" data-id="p1"><span>Od Daniela: ovladač garáže, klíč od sklepa, kde přesně je vjezd do garáže (tam stojí hook), půdorys v PDF</span></label><label><input type="checkbox" data-id="p2"><span>Kolega na Napoleona: dlouhý tmavý kabát, klobouk (dvourohý stačí z papíru), jako dalekohled trubka od plakátu</span></label><label><input type="checkbox" data-id="p3"><span>Před vjezdem vyznačit, kde budou stát Francouzi a kde Rakušané (páska nebo dva batohy), ať se Daniel dívá správně</span></label><label><input type="checkbox" data-id="p4"><span>Kamera 4K 25p, vyvážení bílé ručně (denní), na AI záběry stativ; dron: kompas, SRT titulky zapnuté</span></label><label><input type="checkbox" data-id="p5"><span>Daniel: oblek jako v Břeclavi, bez drobného proužku nebo kostičky (ve 4K se vlní); projít s ním repliky v záložce Repliky</span></label></div><figure class="mapa"><a href="img/mapa_letu.jpg" target="_blank"><img src="img/mapa_letu.jpg" alt="Mapa letů"></a><figcaption><b>Čísla = řádky shotlistu</b> (říkat nahlas). Zlatě dron: kroužek 15 = kolmo shora, šipka 16 = nálet od Lidické, 17 = stoupání, šipka 22 = odlet od terasy (slabé čárky = kamera na terasu). Bíle 4 = příchod k domu, T = terasa, P = příjezd. Oranžově slunce. <a class="noprint" href="img/mapa_letu.jpg" download="Slapanice_mapa_letu.jpg">⬇ Stáhnout mapu</a></figcaption></figure><div class="prav"><h4>Jak točit kvůli AI a dronu</h4><ul><li>Všechno, kam přijde AI (hook, dveře, terasa s Napoleonem, výhled pro přechod): stativ a zamčená kamera, žádný pohyb ani jemný.</li><li>Po každém záběru s lidmi stejný rám bez lidí, 10 s (čistý plát). Bez něj se AI vrstva nedá složit.</li><li>Daniel a Napoleon v jednom záběru: každý na své straně obrazu, ať jde Daniel vrátit maskou z originálu.</li><li>Před záběrem nahlas číslo řádku, u dronu 1 s telefonu s číslem. 4K 25 fps.</li><li>Dron podle Učebny: krátce (10–15 s), pomalu, rovně nebo stoupání, nikdy otáčení na místě, sklon kamery neměnit.</li></ul></div><h4 class="slt">Shotlist · číslo = mapa · F = film, R = reel</h4><div class="slw"><div class="blk"><span class="bt">13:15</span><span class="bk">Hook před garáží · s Danielem</span><span class="tag d">STATIV ZAMČENÝ</span></div>
+<div class="sl" data-id="r1"><label><input type="checkbox" data-id="r1"><span class="n">1</span><span class="tx">Hook: celek na vrata a vjezd, nad nimi kus domu, místo pro vojáky vlevo i vpravo. Daniel přijde ze strany doprostřed, zvedne ruku k vojákům, řekne větu a ovladačem otevře vrata. Každou variantu 2×</span></label><span class="rf"><span class="p s">STATIV</span><i>F1</i></span><div class="say rep" data-r="H"><span class="who">🎤 Daniel · Hook před garáží</span><span class="chs"><button type="button" class="ch" data-r="H" data-v="A"><b>A</b> „Pánové, tady se o místo bojovat nemusí.“</button><button type="button" class="ch" data-r="H" data-v="B"><b>B</b> „Pánové, klid. Tady má každý svoje stání.“</button><button type="button" class="ch" data-r="H" data-v="C"><b>C</b> „Klid, pánové. Stání je v ceně.“</button></span></div></div>
+<div class="sl" data-id="r2"><label><input type="checkbox" data-id="r2"><span class="n">2</span><span class="tx">Čistý plát: stejný rám bez Daniela, 10 s zavřená vrata + 10 s vrata se otevírají. Stativ mezi tím ani nehnout</span></label><span class="rf"><span class="p s">STATIV</span><i>F1</i></span></div>
+<div class="sl" data-id="r3"><label><input type="checkbox" data-id="r3"><span class="n">3</span><span class="tx">Detail: ruka s ovladačem a vrata jedou nahoru, 4 s</span></label><span class="rf"><span class="p s">STATIV</span><i>F1</i></span></div>
+<div class="blk"><span class="bt">13:40</span><span class="bk">Dům a příchod · s Danielem</span><span class="tag d">GIMBAL</span></div>
+<div class="sl" data-id="r4"><label><input type="checkbox" data-id="r4"><span class="n">4</span><span class="tx">Daniel přichází po chodníku k domu proti kameře (ty couváš), jako v Břeclavi. 2×</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F4</i></span><div class="say rep" data-r="D"><span class="who">🎤 Daniel · U dveří domu (volitelná)</span><span class="chs"><button type="button" class="ch" data-r="D" data-v="A"><b>A</b> „Šlapanice, Lidická. Pojďte se mnou dovnitř.“</button><button type="button" class="ch" data-r="D" data-v="B"><b>B</b> „Třetí patro a terasa. Pojďte se podívat.“</button><button type="button" class="ch" data-r="D" data-v="C"><b>C</b> „Pojďte dál.“</button></span></div></div>
+<div class="sl" data-id="r5"><label><input type="checkbox" data-id="r5"><span class="n">5</span><span class="tx">Dům z ulice ze stativu: fasáda, vchod, číslo 1952/2a, 3 × 8 s</span></label><span class="rf"><span class="p s">STATIV</span><i>F4</i></span></div>
+<div class="blk"><span class="bt">14:00</span><span class="bk">Byt s Danielem</span><span class="tag d">GIMBAL</span></div>
+<div class="sl" data-id="r6"><label><input type="checkbox" data-id="r6"><span class="n">6</span><span class="tx">Obývák: Daniel jde od dveří terasy ke kuchyni, jeden plynulý pohyb, v záběru kus podlahy (titulek 20,9 m²). Pomalu a rovnoměrně, žádné švihy ani rychlé panorámy. 2×</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F5</i></span></div>
+<div class="sl" data-id="r7"><label><input type="checkbox" data-id="r7"><span class="n">7</span><span class="tx">Kuchyň a bar: 3 detaily po 4 s (linka, spotřebiče, bar), pomalý posun</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F6</i></span></div>
+<div class="sl" data-id="r8"><label><input type="checkbox" data-id="r8"><span class="n">8</span><span class="tx">Ložnice s klimatizací pomalým panem 8 s, koupelna s WC z rohu širokým objektivem (stativ), předsíň a skříně</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F6</i></span></div>
+<div class="sl" data-id="r9"><label><input type="checkbox" data-id="r9"><span class="n">9</span><span class="tx">Záloha pro přechod „obraz na zdi“: pomalý odjezd od prázdné zdi nad gaučem dozadu do pokoje, 10 s, rovně</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F3</i></span></div>
+<div class="blk"><span class="bt">14:25</span><span class="bk">Reel · dveře a obývák · Daniel + kolega</span><span class="tag d">NA VÝŠKU 9:16</span></div>
+<div class="sl" data-id="r10"><label><input type="checkbox" data-id="r10"><span class="n">10</span><span class="tx">Dveře bytu ze stativu: Daniel otevře, za dveřmi kolega-Napoleon, Daniel řekne větu, Napoleon proběhne kolem něj do bytu. 2–3×</span></label><span class="rf"><span class="p s">STATIV</span><i>R1</i></span><div class="say rep" data-r="R1"><span class="who">🎤 Daniel · Reel · dveře bytu</span><span class="chs"><button type="button" class="ch" data-r="R1" data-v="A"><b>A</b> „Dobrý den, vy jste na prohlídku?“</button><button type="button" class="ch" data-r="R1" data-v="B"><b>B</b> „Jé… Vy jdete na prohlídku?“</button><button type="button" class="ch" data-r="R1" data-v="C"><b>C</b> (beze slov, jen překvapeně zvedne obočí)</button></span></div></div>
+<div class="sl" data-id="r11"><label><input type="checkbox" data-id="r11"><span class="n">11</span><span class="tx">Čistý plát dveří: stejný rám, nikdo, 10 s dveře otevřené + 10 s zavřené</span></label><span class="rf"><span class="p s">STATIV</span><i>R1</i></span></div>
+<div class="sl" data-id="r12"><label><input type="checkbox" data-id="r12"><span class="n">12</span><span class="tx">Obývák: Napoleon (kolega) běží k terase, Daniel v popředí se za ním otočí. 2× + čistý plát 10 s</span></label><span class="rf"><span class="p s">STATIV</span><i>R2</i></span></div>
+<div class="blk"><span class="bt">14:50</span><span class="bk">Garáž a sklep</span></div>
+<div class="sl" data-id="r13"><label><input type="checkbox" data-id="r13"><span class="n">13</span><span class="tx">Garážové stání (celek + číslo stání) a sklep, ze stativu, světlo z LED</span></label><span class="rf"><span class="p s">STATIV</span><i>F6</i></span></div>
+<div class="blk"><span class="bt">15:05</span><span class="bk">Fotky a 3D prohlídka · byt prázdný</span></div>
+<div class="sl" data-id="r14"><label><input type="checkbox" data-id="r14"><span class="n">14</span><span class="tx">Fotky všech místností ze stativu z rohů a ze středu (inzerát + podklad 3D prohlídky). Terasu fotit až v 16:15</span></label><span class="rf"><span class="p f">FOTO</span><i>3D</i></span></div>
+<div class="blk"><span class="bt">15:25</span><span class="bk">Dron</span><span class="tag d">PŘED TERASOU</span></div>
+<div class="sl" data-id="r15"><label><input type="checkbox" data-id="r15"><span class="n">15</span><span class="tx">Kolmo shora nad domem v 80 m, 10 s stát + foto</span></label><span class="rf"><span class="p h">DRON</span><i>F4</i></span></div>
+<div class="sl" data-id="r16"><label><input type="checkbox" data-id="r16"><span class="n">16</span><span class="tx">Nálet od Lidické k uliční fasádě (směr 252°), 40 → 20 m, kamera mírně dolů, 15 s + foto</span></label><span class="rf"><span class="p h">DRON</span><i>F4</i></span></div>
+<div class="sl" data-id="r17"><label><input type="checkbox" data-id="r17"><span class="n">17</span><span class="tx">Stoupání nad Lidickou 20 → 70 m, kamera na dům, Šlapanice za ním, 12 s + foto (titulky Brno 9 km, vlak 700 m)</span></label><span class="rf"><span class="p h">DRON</span><i>F4</i></span></div>
+<div class="blk"><span class="bt">15:45</span><span class="bk">Terasa · slunce nízko ze západu</span><span class="tag d">SLUNCE 236° → 245°</span></div>
+<div class="sl" data-id="r18"><label><input type="checkbox" data-id="r18"><span class="n">18</span><span class="tx">Přechod „mlha za zábradlím“: čistý výhled přes zábradlí na střechy, STATIV, 15 s, nikdo v záběru + foto. Hlídat přepal oblohy</span></label><span class="rf"><span class="p s">STATIV</span><i>F3</i></span></div>
+<div class="sl" data-id="r19"><label><input type="checkbox" data-id="r19"><span class="n">19</span><span class="tx">Daniel vyjde z obýváku na terasu, v záběru dlažba (titulek 16,3 m²). 2×</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F5</i></span></div>
+<div class="sl" data-id="r20"><label><input type="checkbox" data-id="r20"><span class="n">20</span><span class="tx">Reel na výšku ze stativu: kolega-Napoleon u zábradlí s dalekohledem (zády nebo z profilu), „Výhled dobrý.“, pauza, Daniel odpoví. Napoleon na jedné straně obrazu, Daniel na druhé. 2–3× + čistý plát 10 s</span></label><span class="rf"><span class="p s">STATIV</span><i>R3</i></span><div class="say rep" data-r="N"><span class="who">🎤 Kolega jako Napoleon · Reel · Napoleon na terase (říká kolega)</span><span class="ln on">„Výhled dobrý.“</span><span class="po">Říká zády nebo s dalekohledem u oka (hlas dodáme AI, bez lip-syncu). Pak vteřina pauza.</span></div><div class="say rep" data-r="R2"><span class="who">🎤 Daniel · Reel · odpověď na terase</span><span class="chs"><button type="button" class="ch" data-r="R2" data-v="A"><b>A</b> „A stání v garáži je v ceně.“</button><button type="button" class="ch" data-r="R2" data-v="B"><b>B</b> „A garážové stání máte v ceně, Veličenstvo.“</button><button type="button" class="ch" data-r="R2" data-v="C"><b>C</b> „A stání je v ceně.“</button></span></div></div>
+<div class="sl" data-id="r21"><label><input type="checkbox" data-id="r21"><span class="n">21</span><span class="tx">Pozvánka 16:9: Daniel u zábradlí do kamery, za ním střechy. Každou variantu 2×</span></label><span class="rf"><span class="p k">GIMBAL</span><i>F7</i></span><div class="say rep" data-r="P"><span class="who">🎤 Daniel · Pozvánka · konec filmu</span><span class="chs"><button type="button" class="ch" data-r="P" data-v="A"><b>A</b> „Chcete si tenhle byt prohlédnout? Ozvěte se mi a domluvíme si termín.“</button><button type="button" class="ch" data-r="P" data-v="B"><b>B</b> „Líbí se vám? Zavolejte mi a ukážu vám ho naživo.“</button><button type="button" class="ch" data-r="P" data-v="C"><b>C</b> „Prohlídku domluvíte u mě. Těším se.“</button></span></div></div>
+<div class="blk"><span class="bt">16:10</span><span class="bk">Závěr</span><span class="tag d">DO 16:28</span></div>
+<div class="sl" data-id="r22"><label><input type="checkbox" data-id="r22"><span class="n">22</span><span class="tx">Dron odlet od terasy: start 6 m od zábradlí ve výšce terasy, kamera na terasu (72°), rovně vzad na západ a nahoru do 40 m, 15 s. Daniel stojí na terase</span></label><span class="rf"><span class="p h">DRON</span><i>F7</i></span></div>
+<div class="sl" data-id="r23"><label><input type="checkbox" data-id="r23"><span class="n">23</span><span class="tx">Fotky terasy a výhledu</span></label><span class="rf"><span class="p f">FOTO</span><i>3D</i></span></div>
+<div class="blk"><span class="bt">16:28</span><span class="bk">Západ slunce, konec</span></div></div></section>
+<section class="pnl" data-tab="R"><div class="eyebrow">Šlapanice · repliky na place</div>
+<h2>Danielovy věty · vyber A, B, nebo C</h2>
+<p class="oco">A = podle scénáře, B = volněji, C = kratší a úderné. Ťuknutím vybranou variantu zvýrazníš (tablet si ji pamatuje). Každou vybranou natoč aspoň 2×, když je čas, i druhou variantu.</p>
+<h4>Film · hook (řádek 1)</h4><div class="say rep" data-r="H"><span class="who">🎤 Daniel · Hook před garáží</span><span class="pr"><b>Předtím:</b> Vojáci (AI) stojí proti sobě po stranách vjezdu. Daniel vejde doprostřed a zvedne ruku směrem k nim.</span><span class="chs"><button type="button" class="ch" data-r="H" data-v="A"><b>A</b> „Pánové, tady se o místo bojovat nemusí.“</button><button type="button" class="ch" data-r="H" data-v="B"><b>B</b> „Pánové, klid. Tady má každý svoje stání.“</button><button type="button" class="ch" data-r="H" data-v="C"><b>C</b> „Klid, pánové. Stání je v ceně.“</button></span><span class="po"><b>Potom:</b> Ovladačem otevře garáž, vrata jedou nahoru → titulek „Garážové stání v ceně“.</span></div>
+<h4>Film · příchod (řádek 4)</h4><div class="say rep" data-r="D"><span class="who">🎤 Daniel · U dveří domu (volitelná)</span><span class="pr"><b>Předtím:</b> Daniel dojde po chodníku k domu, zastaví u dveří a otočí se do kamery.</span><span class="chs"><button type="button" class="ch" data-r="D" data-v="A"><b>A</b> „Šlapanice, Lidická. Pojďte se mnou dovnitř.“</button><button type="button" class="ch" data-r="D" data-v="B"><b>B</b> „Třetí patro a terasa. Pojďte se podívat.“</button><button type="button" class="ch" data-r="D" data-v="C"><b>C</b> „Pojďte dál.“</button></span><span class="po"><b>Potom:</b> Otevře dveře a vejde. Když nechce mluvit, jen pokyn rukou, unesou to titulky.</span></div>
+<h4>Reel · dveře (řádek 10)</h4><div class="say rep" data-r="R1"><span class="who">🎤 Daniel · Reel · dveře bytu</span><span class="pr"><b>Předtím:</b> Zazvoní. Daniel otevře dveře, za nimi stojí kolega jako Napoleon.</span><span class="chs"><button type="button" class="ch" data-r="R1" data-v="A"><b>A</b> „Dobrý den, vy jste na prohlídku?“</button><button type="button" class="ch" data-r="R1" data-v="B"><b>B</b> „Jé… Vy jdete na prohlídku?“</button><button type="button" class="ch" data-r="R1" data-v="C"><b>C</b> (beze slov, jen překvapeně zvedne obočí)</button></span><span class="po"><b>Potom:</b> Napoleon proběhne kolem něj do obýváku, Daniel ho sleduje pohledem.</span></div>
+<h4>Reel · terasa (řádek 20)</h4><div class="say rep" data-r="N"><span class="who">🎤 Kolega jako Napoleon · Reel · Napoleon na terase (říká kolega)</span><span class="ln on">„Výhled dobrý.“</span><span class="po">Říká zády nebo s dalekohledem u oka (hlas dodáme AI, bez lip-syncu). Pak vteřina pauza.</span></div>
+<h4>Reel · terasa (řádek 20)</h4><div class="say rep" data-r="R2"><span class="who">🎤 Daniel · Reel · odpověď na terase</span><span class="pr"><b>Předtím:</b> Napoleon (kolega): „Výhled dobrý.“ Vteřina pauza.</span><span class="chs"><button type="button" class="ch" data-r="R2" data-v="A"><b>A</b> „A stání v garáži je v ceně.“</button><button type="button" class="ch" data-r="R2" data-v="B"><b>B</b> „A garážové stání máte v ceně, Veličenstvo.“</button><button type="button" class="ch" data-r="R2" data-v="C"><b>C</b> „A stání je v ceně.“</button></span><span class="po"><b>Potom:</b> Titulek „Byt 2+kk s terasou · 1,7 km od Žuráně“ a Danielův kontakt.</span></div>
+<h4>Film · konec (řádek 21)</h4><div class="say rep" data-r="P"><span class="who">🎤 Daniel · Pozvánka · konec filmu</span><span class="pr"><b>Předtím:</b> Daniel stojí u zábradlí terasy, za ním střechy v nízkém slunci.</span><span class="chs"><button type="button" class="ch" data-r="P" data-v="A"><b>A</b> „Chcete si tenhle byt prohlédnout? Ozvěte se mi a domluvíme si termín.“</button><button type="button" class="ch" data-r="P" data-v="B"><b>B</b> „Líbí se vám? Zavolejte mi a ukážu vám ho naživo.“</button><button type="button" class="ch" data-r="P" data-v="C"><b>C</b> „Prohlídku domluvíte u mě. Těším se.“</button></span><span class="po"><b>Potom:</b> Dron odletí od terasy nad střechy (řádek 22) → koncová karta s kontaktem.</span></div>
+<p class="sm">Věty se navazují: hook → (příběh 1805 a přechod jsou bez Daniela) → příchod → byt → pozvánka. V reelu: dveře → Napoleon proběhne → terasa „Výhled dobrý.“ → Danielova odpověď.</p></section>
+<section class="pnl" data-tab="Z"><div class="eyebrow">Interní · nesdílet s klientem</div>
+<h2>Jak to zpracujeme</h2>
+<p class="oco">Ověřeno v katalogu Higgsfieldu 4. 11.: Kling 3.0 Omni Edit, Kling 3.0 Omni Frames, Kling 3.0 Motion Control, Kling 4.0 (video-edit), Seedance 2.0. Princip: AI jen tam, kde je potřeba, všechno ostatní ze skutečného záběru.</p>
+<div class="zp"><h3>Hook · bitva o parkovací místo <span class=tc>· řádky 1–3</span></h3><ul><li><b>Cesta A · Kling 3.0 Omni Edit</b> (`kling_video_edit`, režim pro): video = Danielův take (5–8 s), reference = obrázek vojáků. Prompt: „Add two groups of Napoleonic soldiers (French grenadiers left, Austrian infantry right) facing each other on both sides of the driveway, muskets raised, light smoke. Static camera. Keep the man, the building and the garage door unchanged.“</li><li><b>Cesta B (záloha)</b>: 1 snímek z čistého plátu → ChatGPT jen vloží vojáky (skill konzistentni-framy, kontrola geometrie proti plátu) → Kling 3.0 Omni Frames, start = ten snímek, 5 s, statická kamera („soldiers shift weight, smoke drifts“).</li><li><b>Resolve</b>: vojáci z AI v maskách vlevo a vpravo, Daniel a vrata z originálu (Magic Mask), sjednotit barvy a zrno. Danielova tvář nikdy přes AI.</li></ul></div>
+<div class="zp"><h3>Scéna 1805 · Žuráň <span class=tc>· na place nic</span></h3><ul><li>Still z nabídky (`vizualizace/ai_zuran_1805.png`) nebo nový v ChatGPT → <b>Kling 3.0 pro</b> image-to-video, 10 s, pomalý nájezd, mlha se valí údolím, kouř od ohňů. Záloha Seedance 2.0. V rohu štítek „Ilustrace AI“. Napoleon zády nebo z dálky, bez detailu tváře.</li></ul></div>
+<div class="zp"><h3>Přechod · mlha za zábradlím <span class=tc>· řádek 18</span></h3><ul><li>Z čistého výhledu vzít první snímek → ChatGPT nahradí jen pás za zábradlím bojištěm v mlze se stejným horizontem (zábradlí, terasa beze změny).</li><li><b>Kling 3.0 Omni Frames</b> (`kling_o3_flf`): start = bojiště, konec = skutečný snímek, 5 s, statická kamera → mlha se rozplyne v střechy. V Resolve navázat přesně na posledním snímku řádku 18. Záloha: maska horizontu + prolínačka s mlhou.</li><li>Obraz na zdi (jen když si Daniel vybere): planar tracker ve Fusionu na zeď z řádku 9, do rámu still 1805.</li></ul></div>
+<div class="zp"><h3>Reel · Napoleon na prohlídce <span class=tc>· řádky 10–12 a 20</span></h3><ul><li><b>Kling 3.0 Motion Control</b> (`kling3_0_motion_control`, pro, background_source = input_video): video = take s kolegou (úsek, kde je kolega), obrázek = Napoleon celá postava (kabát, klobouk; ref. list v ChatGPT podle `vizualizace/reel1_napoleon_terasa.png`). Výstup: Napoleon dělá kolegův pohyb v našem bytě.</li><li>Záloha: Kling 3.0 Omni Edit („replace the man in the long coat with Napoleon from the reference, keep everything else“) nebo Kling 4.0 video-edit (do 30 s).</li><li>Daniel maskou z originálu. „Výhled dobrý“ = hlas z ElevenLabs (starší mužský, francouzský přízvuk), bez lip-syncu: Napoleon mluví zády / s dalekohledem u oka.</li></ul></div>
+<div class="zp"><h3>Titulky v prostoru <span class=tc>· řádky 6, 19, 1</span></h3><ul><li>Styl Klamovka 2: na podlaze 20,9 m² a na dlažbě 16,3 m², na zdi klimatizace / kuchyň v ceně, nad vraty „Garážové stání v ceně“. Fusion 3D camera tracker (pomalý rovnoměrný pohyb = tracking drží). Skill titulky-makler, koncová karta Broker Consulting (jako Břeclav).</li></ul></div>
+<div class="zp"><h3>Dron, fotky, 3D prohlídka</h3><ul><li>Dron 4K 25p, titulky se vzdáleností v krajině (Žuráň 1,7 km, vlak 700 m, Brno 9 km). Fotky přes FotelloLocal (svislice). 3D prohlídka skillem prohlidka-3d z půdorysu a fotek (zdarma k zakázce).</li></ul></div>
+<div class="zp"><h3>Kredity</h3><ul><li>Před každým generováním pošlu seznam záběrů, model, délku a cenu (get_cost) a počkám na „jo“. Stilly v ChatGPT zdarma, Kling až po schválení stillů.</li></ul></div>
+<h4>Pořadí ve filmu (cca 90 s) a v reelu (cca 30 s)</h4><ol class="por"><li>F1 hook bitva o parkovací místo 0:00–0:10</li><li>F2 Šlapanice 2. 12. 1805, Žuráň 0:10–0:22</li><li>F3 přechod do dneška 0:22–0:28</li><li>F4 Daniel a dům, dron 0:28–0:40</li><li>F5 terasa a obývák 0:40–0:60</li><li>F6 ložnice, koupelna, kuchyň, garáž, sklep 1:00–1:18</li><li>F7 pozvánka a odlet dronu 1:18–1:30</li><li>R1 dveře · R2 průběh obývákem · R3 terasa „Výhled dobrý“ + odpověď, titulek a kontakt</li></ol></section>
+<p class="foot noprint">Interní podklad FrantišekDron · Šlapanice, Lidická 1952/2a · varianta A · verze 1 · 4. 11. 2026</p>
+</div>
+<script>
+(function(){
+  var K='fd_helesic_A_natoceni_v1', st={};
+  try{st=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+  function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  var tabs=[].slice.call(document.querySelectorAll('.tabs button')), pn=[].slice.call(document.querySelectorAll('.pnl'));
+  function show(id){tabs.forEach(function(b){b.classList.toggle('on',b.dataset.t===id)});pn.forEach(function(p){p.classList.toggle('on',p.dataset.tab===id)});st._tab=id;save();window.scrollTo(0,0)}
+  tabs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.t)})});
+  show(st._tab&&document.querySelector('[data-tab="'+st._tab+'"]')?st._tab:'SL');
+  var bx=[].slice.call(document.querySelectorAll('.sl input'));
+  function prog(){var d=bx.filter(function(x){return x.checked}).length;document.getElementById('prog').textContent=d+' / '+bx.length+' hotovo'}
+  bx.forEach(function(x){
+    x.checked=!!st[x.dataset.id]; x.closest('.sl').classList.toggle('done',x.checked);
+    x.addEventListener('change',function(){if(x.checked)st[x.dataset.id]=1;else delete st[x.dataset.id];x.closest('.sl').classList.toggle('done',x.checked);save();prog()});
+  });
+  var pb=[].slice.call(document.querySelectorAll('.pr0 input'));
+  pb.forEach(function(x){x.checked=!!st[x.dataset.id];x.addEventListener('change',function(){if(x.checked)st[x.dataset.id]=1;else delete st[x.dataset.id];save()})});
+  function chs(){document.querySelectorAll('.ch').forEach(function(c){c.classList.toggle('on',st['v_'+c.dataset.r]===c.dataset.v)})}
+  document.querySelectorAll('.ch').forEach(function(c){c.addEventListener('click',function(){var k='v_'+c.dataset.r;st[k]=(st[k]===c.dataset.v)?'':c.dataset.v;save();chs()})});
+  chs(); prog();
+})();
+</script>
+</body>
+</html>
